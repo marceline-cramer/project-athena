@@ -708,34 +708,38 @@ SelectionDisplay = (function() {
 
     var handlePropertiesTranslateArrowCones = {
         alpha: 1,
+        type: "Shape",
         shape: "Cone",
         solid: true,
         visible: false,
         ignorePickIntersection: true,
-        drawInFront: true
+        RenderLayer: "front"
     };
     var handlePropertiesTranslateArrowCylinders = {
         alpha: 1,
+        type: "Shape",
         shape: "Cylinder",
         solid: true,
         visible: false,
         ignorePickIntersection: true,
-        drawInFront: true
+        RenderLayer: "front"
     };
-    var handleTranslateXCone = Entities.addEntity("shape", handlePropertiesTranslateArrowCones);
-    var handleTranslateXCylinder = Entities.addEntity("shape", handlePropertiesTranslateArrowCylinders);
+    var handleTranslateXCone = Entities.addEntity(handlePropertiesTranslateArrowCones, "local");
+    var handleTranslateXCylinder = Entities.addEntity(handlePropertiesTranslateArrowCylinders, "local");
     Entities.editEntity(handleTranslateXCone, { color: COLOR_RED });
     Entities.editEntity(handleTranslateXCylinder, { color: COLOR_RED });
-    var handleTranslateYCone = Entities.addEntity("shape", handlePropertiesTranslateArrowCones);
-    var handleTranslateYCylinder = Entities.addEntity("shape", handlePropertiesTranslateArrowCylinders);
+    var handleTranslateYCone = Entities.addEntity(handlePropertiesTranslateArrowCones, "local");
+    var handleTranslateYCylinder = Entities.addEntity(handlePropertiesTranslateArrowCylinders, "local");
     Entities.editEntity(handleTranslateYCone, { color: COLOR_GREEN });
     Entities.editEntity(handleTranslateYCylinder, { color: COLOR_GREEN });
-    var handleTranslateZCone = Entities.addEntity("shape", handlePropertiesTranslateArrowCones);
-    var handleTranslateZCylinder = Entities.addEntity("shape", handlePropertiesTranslateArrowCylinders);
+    var handleTranslateZCone = Entities.addEntity(handlePropertiesTranslateArrowCones, "local");
+    var handleTranslateZCylinder = Entities.addEntity(handlePropertiesTranslateArrowCylinders, "local");
     Entities.editEntity(handleTranslateZCone, { color: COLOR_BLUE });
     Entities.editEntity(handleTranslateZCylinder, { color: COLOR_BLUE });
 
     var handlePropertiesRotateRings = {
+        type: "Shape",
+        shape: "Circle",
         alpha: 1,
         solid: true,
         startAt: 0,
@@ -745,35 +749,38 @@ SelectionDisplay = (function() {
         majorTickMarksLength: 0.1,
         visible: false,
         ignorePickIntersection: true,
-        drawInFront: true
+        RenderLayer: "front"
     };
-    var handleRotatePitchRing = Entities.addEntity("circle3d", handlePropertiesRotateRings);
+    var handleRotatePitchRing = Entities.addEntity(handlePropertiesRotateRings, "local");
     Entities.editEntity(handleRotatePitchRing, { 
         color: COLOR_RED,
         majorTickMarksColor: COLOR_RED
     });
-    var handleRotateYawRing = Entities.addEntity("circle3d", handlePropertiesRotateRings);
+    var handleRotateYawRing = Entities.addEntity(handlePropertiesRotateRings, "local");
     Entities.editEntity(handleRotateYawRing, { 
         color: COLOR_GREEN,
         majorTickMarksColor: COLOR_GREEN
     });
-    var handleRotateRollRing = Entities.addEntity("circle3d", handlePropertiesRotateRings);
+    var handleRotateRollRing = Entities.addEntity(handlePropertiesRotateRings, "local");
     Entities.editEntity(handleRotateRollRing, { 
         color: COLOR_BLUE,
         majorTickMarksColor: COLOR_BLUE
     });
 
-    var handleRotateCurrentRing = Entities.addEntity("circle3d", {
+    var handleRotateCurrentRing = Entities.addEntity({
+        type: "Shape",
+        shape: "Circle",
         alpha: 1,
         color: COLOR_ROTATE_CURRENT_RING,
         solid: true,
         innerRadius: 0.9,
         visible: false,
         ignorePickIntersection: true,
-        drawInFront: true
-    });
+        RenderLayer: "front"
+    }, "local");
 
-    var rotationDegreesDisplay = Entities.addEntity("text3d", {
+    var rotationDegreesDisplay = Entities.addEntity({
+        type: "Text",
         text: "",
         color: { red: 0, green: 0, blue: 0 },
         backgroundColor: { red: 255, green: 255, blue: 255 },
@@ -781,7 +788,7 @@ SelectionDisplay = (function() {
         backgroundAlpha: 0.7,
         visible: false,
         isFacingAvatar: true,
-        drawInFront: true,
+        RenderLayer: "front",
         ignorePickIntersection: true,
         dimensions: { x: 0, y: 0 },
         lineHeight: 0.0,
@@ -789,68 +796,74 @@ SelectionDisplay = (function() {
         rightMargin: 0,
         bottomMargin: 0,
         leftMargin: 0
-    });
+    }, "local");
 
     var handlePropertiesStretchCubes = {
+        type: "Box",
         solid: true,
         visible: false,
         ignorePickIntersection: true,
-        drawInFront: true
+        RenderLayer: "front"
     };
-    var handleStretchXCube = Entities.addEntity("cube", handlePropertiesStretchCubes);
+    var handleStretchXCube = Entities.addEntity(handlePropertiesStretchCubes, "local");
     Entities.editEntity(handleStretchXCube, { color: COLOR_RED });
-    var handleStretchYCube = Entities.addEntity("cube", handlePropertiesStretchCubes);
+    var handleStretchYCube = Entities.addEntity(handlePropertiesStretchCubes, "local");
     Entities.editEntity(handleStretchYCube, { color: COLOR_GREEN });
-    var handleStretchZCube = Entities.addEntity("cube", handlePropertiesStretchCubes);
+    var handleStretchZCube = Entities.addEntity(handlePropertiesStretchCubes, "local");
     Entities.editEntity(handleStretchZCube, { color: COLOR_BLUE });
 
     var handlePropertiesStretchPanel = {
+        type: "Box",
         alpha: 0.5,
         solid: true,
         visible: false,
         ignorePickIntersection: true,
-        drawInFront: true
+        RenderLayer: "front"
     };
-    var handleStretchXPanel = Entities.addEntity("cube", handlePropertiesStretchPanel);
+    var handleStretchXPanel = Entities.addEntity(handlePropertiesStretchPanel, "local");
     Entities.editEntity(handleStretchXPanel, { color: COLOR_RED });
-    var handleStretchYPanel = Entities.addEntity("cube", handlePropertiesStretchPanel);
+    var handleStretchYPanel = Entities.addEntity(handlePropertiesStretchPanel, "local");
     Entities.editEntity(handleStretchYPanel, { color: COLOR_GREEN });
-    var handleStretchZPanel = Entities.addEntity("cube", handlePropertiesStretchPanel);
+    var handleStretchZPanel = Entities.addEntity(handlePropertiesStretchPanel, "local");
     Entities.editEntity(handleStretchZPanel, { color: COLOR_BLUE });
 
-    var handleScaleCube = Entities.addEntity("cube", {
+    var handleScaleCube = Entities.addEntity({
+        type: "Box",
         size: 0.025,
         color: COLOR_SCALE_CUBE,
         solid: true,
         visible: false,
         ignorePickIntersection: true,
-        drawInFront: true,
+        RenderLayer: "front",
         borderSize: 1.4
-    });
+    }, "local");
 
-    var handleBoundingBox = Entities.addEntity("cube", {
+    var handleBoundingBox = Entities.addEntity({
+        type: "Box",
         alpha: 1,
         color: COLOR_BOUNDING_EDGE,
         visible: false,
         ignorePickIntersection: true,
-        drawInFront: true,
+        RenderLayer: "front",
         isSolid: false
-    });
+    }, "local");
 
-    var handleDuplicator = Entities.addEntity("cube", {
+    var handleDuplicator = Entities.addEntity({
+        type: "Box",
         alpha: 1,
         size: 0.05,
         color: COLOR_GREEN,
         solid: true,
         visible: false,
         ignorePickIntersection: true,
-        drawInFront: true,
+        RenderLayer: "front",
         borderSize: 1.4
-    });
+    }, "local");
 
     // setting to 0 alpha for now to keep this hidden vs using visible false 
     // because its used as the translate xz tool handle overlay
-    var selectionBox = Entities.addEntity("cube", {
+    var selectionBox = Entities.addEntity({
+        type: "Box",
         size: 1,
         color: COLOR_RED,
         alpha: 0,
@@ -858,11 +871,12 @@ SelectionDisplay = (function() {
         visible: false,
         ignorePickIntersection: true,
         dashed: false
-    });
+    }, "local");
 
     // Handle for x-z translation of particle effect and light entities while inside the bounding box.
     // Limitation: If multiple entities are selected, only the first entity's icon translates the selection.
-    var iconSelectionBox = Entities.addEntity("cube", {
+    var iconSelectionBox = Entities.addEntity({
+        type: "Box",
         size: 0.3, // Match entity icon size.
         color: COLOR_RED,
         alpha: 0,
@@ -870,9 +884,10 @@ SelectionDisplay = (function() {
         visible: false,
         ignorePickIntersection: true,
         dashed: false
-    });
+    }, "local");
 
-    var xRailOverlay = Entities.addEntity("line3d", {
+    var xRailOverlay = Entities.addEntity({
+        type: "PolyLine",
         visible: false,
         start: Vec3.ZERO,
         end: Vec3.ZERO,
@@ -882,8 +897,9 @@ SelectionDisplay = (function() {
             blue: 0
         },
         ignorePickIntersection: true // always ignore this
-    });
-    var yRailOverlay = Entities.addEntity("line3d", {
+    }, "local");
+    var yRailOverlay = Entities.addEntity({
+        type: "PolyLine",
         visible: false,
         start: Vec3.ZERO,
         end: Vec3.ZERO,
@@ -893,8 +909,9 @@ SelectionDisplay = (function() {
             blue: 0
         },
         ignorePickIntersection: true // always ignore this
-    });
-    var zRailOverlay = Entities.addEntity("line3d", {
+    }, "local");
+    var zRailOverlay = Entities.addEntity({
+        type: "PolyLine",
         visible: false,
         start: Vec3.ZERO,
         end: Vec3.ZERO,
@@ -904,7 +921,7 @@ SelectionDisplay = (function() {
             blue: 255
         },
         ignorePickIntersection: true // always ignore this
-    });
+    }, "local");
 
     var allOverlays = [
         handleTranslateXCone,
@@ -970,15 +987,16 @@ SelectionDisplay = (function() {
     var handleTools = {};
     
     var debugPickPlaneEnabled = false;
-    var debugPickPlane = Entities.addEntity("shape", {
+    var debugPickPlane = Entities.addEntity({
+        type: "Shape",
         shape: "Quad",
         alpha: 0.25,
         color: COLOR_DEBUG_PICK_PLANE,
         solid: true,
         visible: false,
         ignorePickIntersection: true,
-        drawInFront: false
-    });
+        RenderLayer: "world"
+    }, "local");
     var debugPickPlaneHits = [];
 
     // We get mouseMoveEvents from the handControllers, via handControllerPointer.
@@ -1050,7 +1068,7 @@ SelectionDisplay = (function() {
             return null;
         }
 
-        // We want to first check the drawInFront overlays (i.e. the handles, but really everything except the selectionBoxes)
+        // We want to first check the RenderLayer overlays (i.e. the handles, but really everything except the selectionBoxes)
         // so that you can click on them even when they're behind things
         var overlayIncludesLayered = [];
         var overlayIncludesNonLayered = [];
@@ -1084,8 +1102,8 @@ SelectionDisplay = (function() {
                 print("testRayIntersect - no overlayExcludes provided.");
             }
             print("testRayIntersect - Hit: " + intersectObj.intersects);
-            print("    intersectObj.overlayID:" + intersectObj.overlayID + "[" + overlayNames[intersectObj.overlayID] + "]");
-            print("        OverlayName: " + overlayNames[intersectObj.overlayID]);
+            print("    intersectObj.entityID:" + intersectObj.entityID + "[" + overlayNames[intersectObj.entityID] + "]");
+            print("        OverlayName: " + overlayNames[intersectObj.entityID]);
             print("    intersectObj.distance:" + intersectObj.distance);
             print("    intersectObj.face:" + intersectObj.face);
             Vec3.print("    intersectObj.intersection:", intersectObj.intersection);
@@ -1101,8 +1119,8 @@ SelectionDisplay = (function() {
             && Math.abs(position.z) <= box.dimensions.z / 2;
     }
     
-    that.isEditHandle = function(overlayID) {
-        var overlayIndex = allOverlays.indexOf(overlayID);
+    that.isEditHandle = function(entityID) {
+        var overlayIndex = allOverlays.indexOf(entityID);
         var maxHandleIndex = allOverlays.indexOf(maximumHandleInAllOverlays);
         return overlayIndex >= 0 && overlayIndex <= maxHandleIndex;
     };
@@ -1138,14 +1156,14 @@ SelectionDisplay = (function() {
 
         var results = testRayIntersect(pickRay, interactiveOverlays);
         if (results.intersects) {
-            var hitOverlayID = results.overlayID;
-            if ((HMD.tabletID && hitOverlayID === HMD.tabletID) || (HMD.tabletScreenID && hitOverlayID === HMD.tabletScreenID)
-                || (HMD.homeButtonID && hitOverlayID === HMD.homeButtonID)) {
+            var hitEntityID = results.entityID;
+            if ((HMD.tabletID && hitEntityID === HMD.tabletID) || (HMD.tabletScreenID && hitEntityID === HMD.tabletScreenID)
+                || (HMD.homeButtonID && hitEntityID === HMD.homeButtonID)) {
                 // EARLY EXIT-(mouse clicks on the tablet should override the edit affordances)
                 return false;
             }
 
-            var hitTool = handleTools[ hitOverlayID ];
+            var hitTool = handleTools[ hitEntityID ];
             if (hitTool) {
                 activeTool = hitTool;
                 that.clearDebugPickPlane();
@@ -1211,7 +1229,7 @@ SelectionDisplay = (function() {
         var highlightNeeded = false;
 
         if (result.intersects) {
-            switch (result.overlayID) {
+            switch (result.entityID) {
                 case handleTranslateXCone:
                 case handleTranslateXCylinder:
                 case handleRotatePitchRing:
@@ -1244,9 +1262,9 @@ SelectionDisplay = (function() {
 
             if (highlightNeeded) {
                 that.resetPreviousHandleColor();
-                Entities.editEntity(result.overlayID, { color: COLOR_HOVER });
-                previousHandle = result.overlayID;
-                previousHandleHelper = that.getHandleHelper(result.overlayID);
+                Entities.editEntity(result.entityID, { color: COLOR_HOVER });
+                previousHandle = result.entityID;
+                previousHandleHelper = that.getHandleHelper(result.entityID);
                 if (previousHandleHelper !== null) {
                     Entities.editEntity(previousHandleHelper, { color: COLOR_HOVER });
                 }
@@ -1540,7 +1558,7 @@ SelectionDisplay = (function() {
         return tool;
     }
 
-    // @param: toolHandle:  The overlayID associated with the tool
+    // @param: toolHandle:  The entityID associated with the tool
     //         that correlates to the tool you wish to query.
     // @note: If toolHandle is null or undefined then activeTool
     //        will be checked against those values as opposed to
@@ -1996,17 +2014,18 @@ SelectionDisplay = (function() {
     
     that.showDebugPickPlaneHit = function(pickHitPosition) {
         var dimension = getDistanceToCamera(pickHitPosition) * DEBUG_PICK_PLANE_HIT_CAMERA_DISTANCE_MULTIPLE;
-        var pickPlaneHit = Entities.addEntity("shape", {
+        var pickPlaneHit = Entities.addEntity({
+            type: "Shape",
             alpha: 0.5,
             shape: "Sphere",
             solid: true,
             visible: true,
             ignorePickIntersection: true,
-            drawInFront: false,
+            RenderLayer: "world",
             color: COLOR_DEBUG_PICK_PLANE_HIT,
             position: pickHitPosition,
             dimensions: { x: dimension, y: dimension, z: dimension }
-        });
+        }, "local");
         debugPickPlaneHits.push(pickPlaneHit);
         if (debugPickPlaneHits.length > DEBUG_PICK_PLANE_HIT_LIMIT) {
             var removedPickPlaneHit = debugPickPlaneHits.shift();
