@@ -711,7 +711,7 @@ SelectionDisplay = (function() {
         alpha: 1,
         type: "Shape",
         shape: "Cone",
-        solid: true,
+        primitiveMode: "solid",
         visible: false,
         ignorePickIntersection: true,
         renderLayer: "front"
@@ -720,7 +720,7 @@ SelectionDisplay = (function() {
         alpha: 1,
         type: "Shape",
         shape: "Cylinder",
-        solid: true,
+        primitiveMode: "solid",
         visible: false,
         ignorePickIntersection: true,
         renderLayer: "front"
@@ -742,7 +742,7 @@ SelectionDisplay = (function() {
         type: "Shape",
         shape: "Circle",
         alpha: 1,
-        solid: true,
+        primitiveMode: "solid",
         startAt: 0,
         endAt: 360,
         innerRadius: ROTATE_RING_IDLE_INNER_RADIUS,
@@ -773,7 +773,7 @@ SelectionDisplay = (function() {
         shape: "Circle",
         alpha: 1,
         color: COLOR_ROTATE_CURRENT_RING,
-        solid: true,
+        primitiveMode: "solid",
         innerRadius: 0.9,
         visible: false,
         ignorePickIntersection: true,
@@ -801,7 +801,7 @@ SelectionDisplay = (function() {
 
     var handlePropertiesStretchCubes = {
         type: "Box",
-        solid: true,
+        primitiveMode: "solid",
         visible: false,
         ignorePickIntersection: true,
         renderLayer: "front"
@@ -816,7 +816,7 @@ SelectionDisplay = (function() {
     var handlePropertiesStretchPanel = {
         type: "Box",
         alpha: 0.5,
-        solid: true,
+        primitiveMode: "solid",
         visible: false,
         ignorePickIntersection: true,
         renderLayer: "front"
@@ -832,7 +832,7 @@ SelectionDisplay = (function() {
         type: "Box",
         size: 0.025,
         color: COLOR_SCALE_CUBE,
-        solid: true,
+        primitiveMode: "solid",
         visible: false,
         ignorePickIntersection: true,
         renderLayer: "front",
@@ -846,7 +846,7 @@ SelectionDisplay = (function() {
         visible: false,
         ignorePickIntersection: true,
         renderLayer: "front",
-        isSolid: false
+        primitiveMode: "lines"
     }, "local");
 
     var handleDuplicator = Entities.addEntity({
@@ -854,7 +854,7 @@ SelectionDisplay = (function() {
         alpha: 1,
         size: 0.05,
         color: COLOR_GREEN,
-        solid: true,
+        primitiveMode: "solid",
         visible: false,
         ignorePickIntersection: true,
         renderLayer: "front",
@@ -868,7 +868,7 @@ SelectionDisplay = (function() {
         size: 1,
         color: COLOR_RED,
         alpha: 0,
-        solid: false,
+        primitiveMode: "lines",
         visible: false,
         ignorePickIntersection: true,
         dashed: false
@@ -881,7 +881,7 @@ SelectionDisplay = (function() {
         size: 0.3, // Match entity icon size.
         color: COLOR_RED,
         alpha: 0,
-        solid: false,
+        primitiveMode: "lines",
         visible: false,
         ignorePickIntersection: true,
         dashed: false
@@ -993,7 +993,7 @@ SelectionDisplay = (function() {
         shape: "Quad",
         alpha: 0.25,
         color: COLOR_DEBUG_PICK_PLANE,
-        solid: true,
+        primitiveMode: "solid",
         visible: false,
         ignorePickIntersection: true,
         renderLayer: "world"
@@ -2019,7 +2019,7 @@ SelectionDisplay = (function() {
             type: "Shape",
             alpha: 0.5,
             shape: "Sphere",
-            solid: true,
+            primitiveMode: "solid",
             visible: true,
             ignorePickIntersection: true,
             renderLayer: "world",
@@ -2808,7 +2808,7 @@ SelectionDisplay = (function() {
 
                 Entities.editEntity(selectedHandle, { 
                     hasTickMarks: true,
-                    solid: false,
+                    primitiveMode: "lines",
                     innerRadius: ROTATE_RING_SELECTED_INNER_RADIUS
                 });
 
@@ -2852,7 +2852,7 @@ SelectionDisplay = (function() {
                 Entities.editEntity(rotationDegreesDisplay, { visible: false, ignorePickIntersection: true });
                 Entities.editEntity(selectedHandle, { 
                     hasTickMarks: false,
-                    solid: true,
+                    primitiveMode: "solid",
                     innerRadius: ROTATE_RING_IDLE_INNER_RADIUS
                 });
                 Entities.editEntity(handleRotateCurrentRing, { visible: false, ignorePickIntersection: true });
