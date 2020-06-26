@@ -880,8 +880,7 @@ SelectionDisplay = (function() {
         alpha: 0,
         primitiveMode: "lines",
         visible: false,
-        ignorePickIntersection: true,
-        dashed: false
+        ignorePickIntersection: true
     }, "local");
 
     // Handle for x-z translation of particle effect and light entities while inside the bounding box.
@@ -893,44 +892,37 @@ SelectionDisplay = (function() {
         alpha: 0,
         primitiveMode: "lines",
         visible: false,
-        ignorePickIntersection: true,
-        dashed: false
+        ignorePickIntersection: true
     }, "local");
 
     var xRailOverlay = Entities.addEntity({
         type: "PolyLine",
         visible: false,
-        start: Vec3.ZERO,
-        end: Vec3.ZERO,
-        color: {
-            red: 255,
-            green: 0,
-            blue: 0
-        },
+        linePoints: [
+            Vec3.ZERO,
+            Vec3.ZERO
+        ],
+        color: COLOR_RED,
         ignorePickIntersection: true // always ignore this
     }, "local");
     var yRailOverlay = Entities.addEntity({
         type: "PolyLine",
         visible: false,
-        start: Vec3.ZERO,
-        end: Vec3.ZERO,
-        color: {
-            red: 0,
-            green: 255,
-            blue: 0
-        },
+        linePoints: [
+            Vec3.ZERO,
+            Vec3.ZERO
+        ],
+        color: COLOR_GREEN,
         ignorePickIntersection: true // always ignore this
     }, "local");
     var zRailOverlay = Entities.addEntity({
         type: "PolyLine",
         visible: false,
-        start: Vec3.ZERO,
-        end: Vec3.ZERO,
-        color: {
-            red: 0,
-            green: 0,
-            blue: 255
-        },
+        linePoints: [
+            Vec3.ZERO,
+            Vec3.ZERO
+        ],
+        color: COLOR_BLUE,
         ignorePickIntersection: true // always ignore this
     }, "local");
 
@@ -1649,7 +1641,9 @@ SelectionDisplay = (function() {
                     position: position, 
                     rotation: rotationY,
                     dimensions: rotateDimensions,
-                    majorTickMarksAngle: ROTATE_DEFAULT_TICK_MARKS_ANGLE
+                    ring: {
+                        majorTickMarksAngle: ROTATE_DEFAULT_TICK_MARKS_ANGLE
+                    }
                 });
             }
             if (!isActiveTool(handleRotateYawRing)) {
@@ -1657,7 +1651,9 @@ SelectionDisplay = (function() {
                     position: position, 
                     rotation: rotationZ,
                     dimensions: rotateDimensions,
-                    majorTickMarksAngle: ROTATE_DEFAULT_TICK_MARKS_ANGLE
+                    ring: {
+                        majorTickMarksAngle: ROTATE_DEFAULT_TICK_MARKS_ANGLE
+                    }
                 });
             }
             if (!isActiveTool(handleRotateRollRing)) {
@@ -1665,7 +1661,9 @@ SelectionDisplay = (function() {
                     position: position, 
                     rotation: rotationX,
                     dimensions: rotateDimensions,
-                    majorTickMarksAngle: ROTATE_DEFAULT_TICK_MARKS_ANGLE
+                    ring: {
+                        majorTickMarksAngle: ROTATE_DEFAULT_TICK_MARKS_ANGLE
+                    }
                 });
             }
             Entities.editEntity(handleRotateCurrentRing, { dimensions: rotateDimensions });
