@@ -6,6 +6,7 @@
 //    Modified by Daniela Fontes * @DanielaFifo and Tiago Andrade @TagoWill on 4/7/2017
 //    Modified by David Back on 1/9/2018
 //  Copyright 2014 High Fidelity, Inc.
+//  Copyright 2020 Vircadia contributors.
 //
 //  This script implements a class useful for building tools for editing entities.
 //
@@ -713,7 +714,7 @@ SelectionDisplay = (function() {
         solid: true,
         visible: false,
         ignorePickIntersection: true,
-        RenderLayer: "front"
+        renderLayer: "front"
     };
     var handlePropertiesTranslateArrowCylinders = {
         alpha: 1,
@@ -722,7 +723,7 @@ SelectionDisplay = (function() {
         solid: true,
         visible: false,
         ignorePickIntersection: true,
-        RenderLayer: "front"
+        renderLayer: "front"
     };
     var handleTranslateXCone = Entities.addEntity(handlePropertiesTranslateArrowCones, "local");
     var handleTranslateXCylinder = Entities.addEntity(handlePropertiesTranslateArrowCylinders, "local");
@@ -749,7 +750,7 @@ SelectionDisplay = (function() {
         majorTickMarksLength: 0.1,
         visible: false,
         ignorePickIntersection: true,
-        RenderLayer: "front"
+        renderLayer: "front"
     };
     var handleRotatePitchRing = Entities.addEntity(handlePropertiesRotateRings, "local");
     Entities.editEntity(handleRotatePitchRing, { 
@@ -776,7 +777,7 @@ SelectionDisplay = (function() {
         innerRadius: 0.9,
         visible: false,
         ignorePickIntersection: true,
-        RenderLayer: "front"
+        renderLayer: "front"
     }, "local");
 
     var rotationDegreesDisplay = Entities.addEntity({
@@ -788,7 +789,7 @@ SelectionDisplay = (function() {
         backgroundAlpha: 0.7,
         visible: false,
         isFacingAvatar: true,
-        RenderLayer: "front",
+        renderLayer: "front",
         ignorePickIntersection: true,
         dimensions: { x: 0, y: 0 },
         lineHeight: 0.0,
@@ -803,7 +804,7 @@ SelectionDisplay = (function() {
         solid: true,
         visible: false,
         ignorePickIntersection: true,
-        RenderLayer: "front"
+        renderLayer: "front"
     };
     var handleStretchXCube = Entities.addEntity(handlePropertiesStretchCubes, "local");
     Entities.editEntity(handleStretchXCube, { color: COLOR_RED });
@@ -818,7 +819,7 @@ SelectionDisplay = (function() {
         solid: true,
         visible: false,
         ignorePickIntersection: true,
-        RenderLayer: "front"
+        renderLayer: "front"
     };
     var handleStretchXPanel = Entities.addEntity(handlePropertiesStretchPanel, "local");
     Entities.editEntity(handleStretchXPanel, { color: COLOR_RED });
@@ -834,7 +835,7 @@ SelectionDisplay = (function() {
         solid: true,
         visible: false,
         ignorePickIntersection: true,
-        RenderLayer: "front",
+        renderLayer: "front",
         borderSize: 1.4
     }, "local");
 
@@ -844,7 +845,7 @@ SelectionDisplay = (function() {
         color: COLOR_BOUNDING_EDGE,
         visible: false,
         ignorePickIntersection: true,
-        RenderLayer: "front",
+        renderLayer: "front",
         isSolid: false
     }, "local");
 
@@ -856,7 +857,7 @@ SelectionDisplay = (function() {
         solid: true,
         visible: false,
         ignorePickIntersection: true,
-        RenderLayer: "front",
+        renderLayer: "front",
         borderSize: 1.4
     }, "local");
 
@@ -995,7 +996,7 @@ SelectionDisplay = (function() {
         solid: true,
         visible: false,
         ignorePickIntersection: true,
-        RenderLayer: "world"
+        renderLayer: "world"
     }, "local");
     var debugPickPlaneHits = [];
 
@@ -1068,7 +1069,7 @@ SelectionDisplay = (function() {
             return null;
         }
 
-        // We want to first check the RenderLayer overlays (i.e. the handles, but really everything except the selectionBoxes)
+        // We want to first check the renderLayer overlays (i.e. the handles, but really everything except the selectionBoxes)
         // so that you can click on them even when they're behind things
         var overlayIncludesLayered = [];
         var overlayIncludesNonLayered = [];
@@ -2021,7 +2022,7 @@ SelectionDisplay = (function() {
             solid: true,
             visible: true,
             ignorePickIntersection: true,
-            RenderLayer: "world",
+            renderLayer: "world",
             color: COLOR_DEBUG_PICK_PLANE_HIT,
             position: pickHitPosition,
             dimensions: { x: dimension, y: dimension, z: dimension }
