@@ -739,15 +739,17 @@ SelectionDisplay = (function() {
     Entities.editEntity(handleTranslateZCylinder, { color: COLOR_BLUE });
 
     var handlePropertiesRotateRings = {
-        type: "Shape",
-        shape: "Circle",
+        type: "Gizmo",
+        gizmoType: "ring",
         alpha: 1,
         primitiveMode: "solid",
-        startAt: 0,
-        endAt: 360,
-        innerRadius: ROTATE_RING_IDLE_INNER_RADIUS,
-        majorTickMarksAngle: ROTATE_DEFAULT_TICK_MARKS_ANGLE,
-        majorTickMarksLength: 0.1,
+        ring: {
+            startAngle: 0,
+            endAngle: 360,
+            innerRadius: ROTATE_RING_IDLE_INNER_RADIUS,
+            majorTickMarksAngle: ROTATE_DEFAULT_TICK_MARKS_ANGLE,
+            majorTickMarksLength: 0.1,
+        },
         visible: false,
         ignorePickIntersection: true,
         renderLayer: "front"
@@ -755,26 +757,34 @@ SelectionDisplay = (function() {
     var handleRotatePitchRing = Entities.addEntity(handlePropertiesRotateRings, "local");
     Entities.editEntity(handleRotatePitchRing, { 
         color: COLOR_RED,
-        majorTickMarksColor: COLOR_RED
+        ring: {
+            majorTickMarksColor: COLOR_RED
+        }
     });
     var handleRotateYawRing = Entities.addEntity(handlePropertiesRotateRings, "local");
     Entities.editEntity(handleRotateYawRing, { 
         color: COLOR_GREEN,
-        majorTickMarksColor: COLOR_GREEN
+        ring: {
+            majorTickMarksColor: COLOR_GREEN
+        }
     });
     var handleRotateRollRing = Entities.addEntity(handlePropertiesRotateRings, "local");
     Entities.editEntity(handleRotateRollRing, { 
         color: COLOR_BLUE,
-        majorTickMarksColor: COLOR_BLUE
+        ring: {
+            majorTickMarksColor: COLOR_BLUE
+        }
     });
 
     var handleRotateCurrentRing = Entities.addEntity({
-        type: "Shape",
-        shape: "Circle",
+        type: "Gizmo",
+        gizmoType: "ring",
         alpha: 1,
         color: COLOR_ROTATE_CURRENT_RING,
         primitiveMode: "solid",
-        innerRadius: 0.9,
+        ring: {
+            innerRadius: 0.9
+        },
         visible: false,
         ignorePickIntersection: true,
         renderLayer: "front"
