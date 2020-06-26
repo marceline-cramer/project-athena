@@ -777,7 +777,9 @@ EquipHotspotBuddy.prototype.update = function(deltaTime, timestamp, controllerDa
     };
 
     var onMousePress = function(event) {
-        if (isInEditMode() || !event.isLeftButton) { // don't consider any left clicks on the entity while in edit
+        var EDIT_SETTING = "io.highfidelity.isEditing";
+        var isInEditMode = Settings.getValue(EDIT_SETTING);
+        if (isInEditMode || !event.isLeftButton) { // don't consider any left clicks on the entity while in edit
             return;
         }
         var pickRay = Camera.computePickRay(event.x, event.y);
