@@ -1917,7 +1917,7 @@ SelectionDisplay = (function() {
         }
         if (activeRotateRing !== null) {
             var tickMarksAngle = ctrlPressed ? ROTATE_CTRL_SNAP_ANGLE : ROTATE_DEFAULT_TICK_MARKS_ANGLE;
-            Entities.editEntity(activeRotateRing, { majorTickMarksAngle: tickMarksAngle });
+            Entities.editEntity(activeRotateRing, { ring: { majorTickMarksAngle: tickMarksAngle }});
         }
     };
 
@@ -2218,14 +2218,18 @@ SelectionDisplay = (function() {
                             z: RAIL_AXIS_LENGTH
                         });
                         Entities.editEntity(xRailOverlay, {
-                            start: xStart,
-                            end: xEnd,
+                            linePoints: [
+                                xStart,
+                                xEnd
+                            ],
                             visible: true,
                             ignorePickIntersection: true
                         });
                         Entities.editEntity(zRailOverlay, {
-                            start: zStart,
-                            end: zEnd,
+                            linePoints: [
+                                xStart,
+                                xEnd
+                            ],
                             visible: true,
                             ignorePickIntersection: true
                         });
@@ -2817,15 +2821,19 @@ SelectionDisplay = (function() {
                 Entities.editEntity(selectedHandle, { 
                     hasTickMarks: true,
                     primitiveMode: "lines",
-                    innerRadius: ROTATE_RING_SELECTED_INNER_RADIUS
+                    ring: {
+                        innerRadius: ROTATE_RING_SELECTED_INNER_RADIUS
+                    }
                 });
 
                 Entities.editEntity(rotationDegreesDisplay, { visible: true });
                 Entities.editEntity(handleRotateCurrentRing, {
                     position: rotationCenter,
                     rotation: worldRotation,
-                    startAt: 0,
-                    endAt: 0,
+                    ring: {
+                        startAngle: 0,
+                        endAngle: 0
+                    },
                     visible: true,
                     ignorePickIntersection: false
                 });
@@ -2858,10 +2866,12 @@ SelectionDisplay = (function() {
                     print("================== " + getMode() + "(addHandleRotateTool onEnd) -> =======================");
                 }
                 Entities.editEntity(rotationDegreesDisplay, { visible: false, ignorePickIntersection: true });
-                Entities.editEntity(selectedHandle, { 
-                    hasTickMarks: false,
+                Entities.editEntity(selectedHandle, {
                     primitiveMode: "solid",
-                    innerRadius: ROTATE_RING_IDLE_INNER_RADIUS
+                    ring: {
+                        innerRadius: ROTATE_RING_IDLE_INNER_RADIUS,
+                        hasTickMarks: false
+                    }
                 });
                 Entities.editEntity(handleRotateCurrentRing, { visible: false, ignorePickIntersection: true });
                 pushCommandForSelections();
@@ -2920,8 +2930,10 @@ SelectionDisplay = (function() {
                         endAtCurrent = maxDegrees;
                     }
                     Entities.editEntity(handleRotateCurrentRing, {
-                        startAt: startAtCurrent,
-                        endAt: endAtCurrent
+                        ring: {
+                            startAngle: startAtCurrent,
+                            endAngle: endAtCurrent
+                        }
                     });
                     
                     if (debugPickPlaneEnabled) {
