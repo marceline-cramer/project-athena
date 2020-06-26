@@ -2819,9 +2819,9 @@ SelectionDisplay = (function() {
                 that.setHandleDuplicatorVisible(false);
 
                 Entities.editEntity(selectedHandle, { 
-                    hasTickMarks: true,
                     primitiveMode: "lines",
                     ring: {
+                        hasTickMarks: true,
                         innerRadius: ROTATE_RING_SELECTED_INNER_RADIUS
                     }
                 });
